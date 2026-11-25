@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffdf5">
+  <meta name="description" content="Search a real map for plastic recycling and collection options near an area you choose.">
+  <title>Find recycling locations | RecycleRight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="locations">
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="RecycleRight home">
+        <span class="brand-mark" aria-hidden="true">♻</span><span>Recycle<span class="brand-light">Right</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="primary-nav">
+        <a href="index.html">Home</a>
+        <a href="identify.html">Identify Plastic</a>
+        <a class="active" href="locations.html" aria-current="page">Locations</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro locations-intro">
+      <span class="eyebrow"><span aria-hidden="true">⌖</span> Find a nearby option</span>
+      <h1>Recycling centres<br><span class="text-sage">near you</span></h1>
+      <p>Enter a city, neighbourhood or postcode to search a live map for plastic recycling and collection options.</p>
+    </section>
+
+    <section class="location-section content-width" aria-labelledby="search-title">
+      <div class="location-search-panel">
+        <div class="location-search-copy">
+          <span class="step-number">01</span>
+          <h2 id="search-title">Where should we look?</h2>
+          <p>Search results come from Google Maps for the area you enter. Please check with each centre before visiting to confirm what it accepts.</p>
+          <form id="location-search" class="location-form">
+            <label for="location-query">City, neighbourhood or postcode</label>
+            <div class="search-control">
+              <span aria-hidden="true">⌕</span>
+              <input id="location-query" name="location" type="search" placeholder="e.g. Hyderabad" autocomplete="postal-code" required>
+              <button class="button button-primary" type="submit">Search map</button>
+            </div>
+            <p class="form-error" id="location-error" role="alert" hidden>Please enter an area to search.</p>
+          </form>
+        </div>
+        <div class="location-pin-art" aria-hidden="true">
+          <span class="pin-shadow"></span><span class="pin-shape">⌖</span>
+          <span class="pin-leaf leaf-one"></span><span class="pin-leaf leaf-two"></span>
+        </div>
+      </div>
+
+      <div class="map-heading">
+        <div>
+          <span class="eyebrow">Explore your area</span>
+          <h2 id="map-title">Your map is ready</h2>
+        </div>
+        <a class="text-link" id="open-map" href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">View live results &amp; map <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="map-results-note">Google Maps supplies live search listings and map markers where available. Select “View live results &amp; map” to see the full results list.</p>
+      <div class="map-frame-wrap">
+        <div class="map-placeholder" id="map-placeholder">
+          <span class="map-placeholder-icon" aria-hidden="true">⌖</span>
+          <h3>Choose an area to get started</h3>
+          <p>Search results and map markers will appear here from Google Maps.</p>
+        </div>
+        <iframe id="location-map" class="location-map" title="Google Maps plastic recycling centre search" loading="lazy" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
+      </div>
+      <div class="location-note">
+        <span class="note-icon" aria-hidden="true">i</span>
+        <p><strong>Check before you go.</strong> Search results may include general recycling facilities and can change. Contact a centre to confirm its address, opening hours and whether it accepts your plastic type. Local collection rules vary.</p>
+      </div>
+      <p class="location-source">Map search provided by <a href="https://maps.google.com/" target="_blank" rel="noopener noreferrer">Google Maps</a>. RecycleRight does not maintain or verify a directory of centres.</p>
+    </section>
+
+    <section class="location-help content-width">
+      <div>
+        <span class="eyebrow">Before you visit</span>
+        <h2>A quick checklist</h2>
+      </div>
+      <ul class="check-list">
+        <li><span aria-hidden="true">✓</span> Check that the centre accepts your resin code.</li>
+        <li><span aria-hidden="true">✓</span> Rinse containers and follow the centre’s preparation rules.</li>
+        <li><span aria-hidden="true">✓</span> Confirm opening times and drop-off instructions directly.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">♻</span><span>Recycle<span class="brand-light">Right</span></span></a>
+      <p>Small actions, thoughtful choices, a cleaner planet.</p>
+      <span class="footer-credit">Map results are supplied by Google Maps.</span>
+    </div>
+  </footer>
+</body>
+</html>
