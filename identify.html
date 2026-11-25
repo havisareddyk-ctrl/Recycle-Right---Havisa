@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffdf5">
+  <meta name="description" content="Use a photo as a reference, then manually select the resin code to learn about five common plastic types.">
+  <title>Identify plastic | RecycleRight</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body data-page="identify">
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="RecycleRight home">
+        <span class="brand-mark" aria-hidden="true">♻</span><span>Recycle<span class="brand-light">Right</span></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="primary-nav">
+        <a href="index.html">Home</a>
+        <a class="active" href="identify.html" aria-current="page">Identify Plastic</a>
+        <a href="locations.html">Locations</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro identify-intro">
+      <span class="eyebrow"><span class="eyebrow-dot"></span> Take a closer look</span>
+      <h1>What plastic<br><span class="text-sage">is it?</span></h1>
+      <p>Upload or take a photo as a visual reference, then check the resin code on your item. The photo is not automatically identified.</p>
+    </section>
+
+    <section class="identify-workspace content-width" aria-label="Plastic photo and manual identification">
+      <div class="upload-panel">
+        <div class="panel-topline"><span class="step-number">01</span><span>Choose an item photo</span></div>
+        <h2>Upload or take a photo</h2>
+        <p class="panel-description">For best results, use a clear, well-lit photo and look for the small resin code stamped on the bottom.</p>
+        <input class="visually-hidden" type="file" id="photo-upload" accept="image/*" tabindex="-1" aria-hidden="true">
+        <input class="visually-hidden" type="file" id="camera-upload" accept="image/*" capture="environment" tabindex="-1" aria-hidden="true">
+        <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Choose an image file or drag and drop an image">
+          <img id="image-preview" class="image-preview" alt="Preview of the selected plastic item" hidden>
+          <div class="drop-content" id="drop-content">
+            <span class="upload-icon" aria-hidden="true">▧</span>
+            <strong>Drag and drop an image here</strong>
+            <span>or choose a photo from your device</span>
+            <button type="button" class="button button-outline" id="choose-photo">Choose file</button>
+            <span class="file-note">JPG, PNG, GIF or WEBP</span>
+          </div>
+        </div>
+        <div class="file-details" id="file-details" aria-live="polite" hidden>
+          <span class="file-check" aria-hidden="true">✓</span>
+          <span class="file-name" id="file-name"></span>
+          <button type="button" class="clear-photo" id="clear-photo">Remove photo</button>
+        </div>
+        <p class="form-error" id="photo-error" role="alert" hidden></p>
+        <button type="button" class="camera-button" id="take-photo"><span aria-hidden="true">▣</span> Take a photo</button>
+        <p class="camera-note">Camera availability depends on your device and browser. If it is unavailable, choose a photo instead.</p>
+      </div>
+
+      <div class="identify-divider" aria-hidden="true"><span>then</span></div>
+
+      <div class="code-panel">
+        <div class="panel-topline"><span class="step-number">02</span><span>Check the symbol</span></div>
+        <h2>Choose the resin code</h2>
+        <p class="panel-description">Find the number inside the triangle on the item, then select the matching code below. A photo alone cannot identify the plastic.</p>
+        <form id="identify-form">
+          <label class="field-label" for="resin-code">Number on your item</label>
+          <div class="resin-picker" role="group" aria-label="Select a resin identification code">
+            <button type="button" class="resin-option" data-code="1" aria-pressed="false"><span class="resin-symbol">1</span><span>PET</span></button>
+            <button type="button" class="resin-option" data-code="2" aria-pressed="false"><span class="resin-symbol">2</span><span>HDPE</span></button>
+            <button type="button" class="resin-option" data-code="4" aria-pressed="false"><span class="resin-symbol">4</span><span>LDPE</span></button>
+            <button type="button" class="resin-option" data-code="5" aria-pressed="false"><span class="resin-symbol">5</span><span>PP</span></button>
+            <button type="button" class="resin-option" data-code="6" aria-pressed="false"><span class="resin-symbol">6</span><span>PS</span></button>
+          </div>
+          <p class="form-hint">Only the five plastic types in this project are shown. If your item has another code or no visible code, check with your local recycling provider.</p>
+          <button class="button button-primary identify-button" type="submit">Show plastic information <span aria-hidden="true">→</span></button>
+          <p class="form-error" id="identify-error" role="alert" hidden>Select the code shown on the item to continue.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="result-section content-width" id="identification-result" aria-live="polite" hidden>
+      <div class="result-heading"><span class="result-check" aria-hidden="true">✓</span><div><span class="eyebrow">Based on the code you selected</span><h2 id="result-title">Plastic information</h2></div></div>
+      <div class="result-card">
+        <div class="result-code" id="result-code">1</div>
+        <div class="result-copy">
+          <span class="eyebrow" id="result-full-name"></span>
+          <h3 id="result-abbreviation"></h3>
+          <p class="result-use" id="result-uses"></p>
+          <div class="before-recycling"><span class="before-icon" aria-hidden="true">✳</span><div><strong>Before recycling</strong><p id="result-advice"></p><a id="result-source" class="text-link" href="https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables" target="_blank" rel="noopener noreferrer">Read the EPA guidance <span aria-hidden="true">↗</span></a></div></div>
+        </div>
+      </div>
+      <div class="result-actions"><a class="button button-secondary" href="locations.html">Find collection options <span aria-hidden="true">→</span></a><button type="button" class="text-button" id="choose-another">Choose another code</button></div>
+    </section>
+
+    <section class="guide-section content-width" id="plastic-guide" aria-labelledby="guide-title">
+      <div class="center-heading">
+        <span class="eyebrow">Know your material</span>
+        <h2 id="guide-title">Plastic types guide</h2>
+        <p>Resin codes identify the plastic material; they do not guarantee that it is accepted for recycling locally.</p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card"><span class="guide-code">01</span><span class="guide-short">PET</span><h3>Polyethylene terephthalate</h3><p>Often used for drink bottles and food containers.</p><p class="guide-advice"><strong>Before recycling:</strong> Empty and rinse it. Check whether your local programme accepts it.</p></article>
+        <article class="guide-card"><span class="guide-code">02</span><span class="guide-short">HDPE</span><h3>High-density polyethylene</h3><p>Often used for milk, detergent and shampoo containers.</p><p class="guide-advice"><strong>Before recycling:</strong> Empty and rinse containers, then check local acceptance.</p></article>
+        <article class="guide-card"><span class="guide-code">04</span><span class="guide-short">LDPE</span><h3>Low-density polyethylene</h3><p>Often used for bags, wraps and flexible films.</p><p class="guide-advice"><strong>Before recycling:</strong> Keep bags and film out of household bins; look for a participating store drop-off.</p></article>
+        <article class="guide-card"><span class="guide-code">05</span><span class="guide-short">PP</span><h3>Polypropylene</h3><p>Often used for tubs, caps and some food containers.</p><p class="guide-advice"><strong>Before recycling:</strong> Check your local programme—acceptance varies by area and item.</p></article>
+        <article class="guide-card"><span class="guide-code">06</span><span class="guide-short">PS</span><h3>Polystyrene</h3><p>Often used for foam packaging, cups and some food trays.</p><p class="guide-advice"><strong>Before recycling:</strong> Few local programmes accept foam; check for a suitable drop-off before bringing it.</p></article>
+      </div>
+      <p class="local-rules-note"><span aria-hidden="true">i</span> Recycling rules depend on your location and the specific item. When in doubt, check your local provider to avoid contaminating a recycling load.</p>
+    </section>
+
+    <section class="sources-section" id="sources">
+      <div class="content-width sources-inner">
+        <div><span class="eyebrow">Reliable information</span><h2>Sources &amp; references</h2><p>General recycling guidance is based on these references. Local rules may differ.</p></div>
+        <ul class="source-list">
+          <li><a href="https://www.epa.gov/recycle/how-do-i-recycle-common-recyclables" target="_blank" rel="noopener noreferrer">U.S. EPA — How do I recycle common recyclables? <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://www.epa.gov/recycle/recycling-basics-and-benefits" target="_blank" rel="noopener noreferrer">U.S. EPA — Recycling basics and benefits <span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://earth911.com/" target="_blank" rel="noopener noreferrer">Earth911 — Recycling search and drop-off information <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true">♻</span><span>Recycle<span class="brand-light">Right</span></span></a>
+      <p>Small actions, thoughtful choices, a cleaner planet.</p>
+      <a class="footer-credit" href="#sources">View sources &amp; references</a>
+    </div>
+  </footer>
+</body>
+</html>
